@@ -11,8 +11,11 @@ import org.ufoss.kotysa.tables
 import resa.mario.conf.DataBaseConfig
 import resa.mario.db.getDepartamentos
 import resa.mario.db.getEmpleados
+import resa.mario.db.getUsuarios
 import resa.mario.entities.DepartamentosTable
 import resa.mario.entities.EmpleadosTable
+import resa.mario.entities.UsuariosTable
+import resa.mario.mappers.toUsuario
 
 @Single
 class DataBaseService(
@@ -36,7 +39,8 @@ class DataBaseService(
     private fun getTables(): H2Tables {
         return tables().h2(
             DepartamentosTable,
-            EmpleadosTable
+            EmpleadosTable,
+            UsuariosTable
         )
     }
 
@@ -44,6 +48,7 @@ class DataBaseService(
         launch {
             client createTableIfNotExists (DepartamentosTable)
             client createTableIfNotExists (EmpleadosTable)
+            client createTableIfNotExists (UsuariosTable)
         }
     }
 
@@ -51,6 +56,7 @@ class DataBaseService(
         try {
             client deleteAllFrom EmpleadosTable
             client deleteAllFrom DepartamentosTable
+            client deleteAllFrom UsuariosTable
         } catch (_: Exception) {
         }
     }
@@ -64,6 +70,10 @@ class DataBaseService(
 
         getEmpleados().forEach {
             client insert it
+        }
+
+        getUsuarios().forEach {
+            client insert it.toUsuario()
         }
 
     }

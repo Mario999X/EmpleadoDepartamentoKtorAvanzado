@@ -15,8 +15,40 @@ fun Application.module() {
     // Base de datos
     configureDataBase()
 
-    //configureSecurity()
+    configureSecurity()
     configureSerialization()
     configureRouting()
 
 }
+
+/**
+ *  -- EXPLICACION --
+ *
+ *      -- USUARIOS Y Bcrypt --
+ *
+ *  1. Agregar los usuarios como cualquier otro dato
+ *      - Modelo
+ *      - Tabla
+ *      - DatabaseService
+ *      - Data
+ *  2. Para la gestion de usuarios es muy conveniente el uso de dto, tales como:
+ *      - UserRegisterDto
+ *      - UserLoginDto
+ *      - UserResponseDto
+ *  3. Si se usan DTO, es tambien necesario el uso de mappers para pasar de modelo a dto y al reves
+ *      - TIP: El cifrar la contraseña puede hacerse tanto en el servicio como en el mapper; en mi caso escogere este ultimo
+ *      - Usare la libreria que estoy acostumbrado a manejar de Bcrypt, generare una clase objeto llamada Cifrador
+ *
+ *  4. Configuramos el repositorio de usuarios
+ *  5. Configuramos el servicio
+ *
+ *      -- TOKEN Y SEGURIDAD --
+ *
+ *  6. Configuramos el plugin de seguridad
+ *      6,1. Configuramos los parametros en el .conf
+ *      6,2. Seguimos los pasos explicados en la clase [Security]
+ *
+ *  7. Configuramos las rutas
+ *      - Seguir pasos de la clase [UsersRoute]
+ *
+ */

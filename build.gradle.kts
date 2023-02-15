@@ -75,6 +75,9 @@ dependencies {
 
     // Cache
     implementation("io.github.reactivecircus.cache4k:cache4k:$cache_version")
+
+    // BCrypt
+    implementation("com.ToxicBakery.library.bcrypt:bcrypt:1.0.9")
 }
 
 // Para Koin Annotations, directorio donde se encuentran las clases compiladas
