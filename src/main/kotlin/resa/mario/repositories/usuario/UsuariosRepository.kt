@@ -25,7 +25,7 @@ class UsuariosRepository(
     }
 
     override suspend fun delete(entity: Usuario): Usuario? {
-        log.info { "Eliminando empleado con id: ${entity.id}" }
+        log.info { "Eliminando usuario con id: ${entity.id}" }
 
         entity.let {
             val res = (dataBaseService.client deleteFrom UsuariosTable where UsuariosTable.id eq it.id!!).execute()

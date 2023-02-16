@@ -1,1 +1,1 @@
-rootProject.name = "resa.mario.empleadodepartamentoktor_3"
+rootProject.name = "EmpleadoDepartamentoKtor_3"

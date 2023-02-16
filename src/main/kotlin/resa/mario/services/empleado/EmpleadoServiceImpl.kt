@@ -4,15 +4,15 @@ import kotlinx.coroutines.flow.Flow
 import org.koin.core.annotation.Named
 import org.koin.core.annotation.Single
 import resa.mario.models.Empleado
-import resa.mario.repositories.departamento.DepartamentoRepository
+import resa.mario.repositories.departamento.DepartamentoCachedRepository
 import resa.mario.repositories.empleado.EmpleadoRepository
 
 @Single
 class EmpleadoServiceImpl(
     @Named("EmpleadoRepository")
     private val repository: EmpleadoRepository,
-    @Named("DepartamentoRepository")
-    private val departamentoRepository: DepartamentoRepository,
+    @Named("DepartamentoCachedRepository")
+    private val departamentoRepository: DepartamentoCachedRepository,
 ) : EmpleadoService {
 
     override suspend fun findAll(): Flow<Empleado> {
